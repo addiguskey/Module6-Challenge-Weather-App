@@ -1,0 +1,27 @@
+<!-- JUMBOTRON -->
+    <!-- div for search bar and search history -->
+      <!-- ul, li buttons for search history -->
+      //Creating a Li button //
+        function displayQuestions() {
+            questionDisplay.empty();
+            choicesDisplay.empty();
+
+            var userQuestions = questionsArray[questionIndex].question;
+            questionDisplay.text(userQuestions);
+
+            var userChoices = questionsArray[questionIndex].choices;
+            for (var i = 0; i < userChoices.length; i++) {
+                var multipleChoiceOp = userChoices[i];
+                var newLi = $("<button>", {
+                class: "btn btn-primary",
+                }).text(multipleChoiceOp);
+                choicesDisplay.append(newLi);
+            }
+            }
+    <!-- div for main content -->
+        CITY (date)
+        - temp:
+        - wind: 
+        - Humidity:
+        - UV Index"
+    <!-- div for 5day forcast -->
