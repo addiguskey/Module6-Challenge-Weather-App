@@ -16,161 +16,83 @@
     <!-- Google Fonts -->
     <title>WEATHER APP</title>
   </head>
-    <!-- JUMBOTRON -->
-  <main>
-  <main class="container py-4">
-    <header class="pb-3 mb-4 border-bottom">
-      <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
-        <div class="display-5 fw-bold mx-auto" id="nav-bar">WHEATHER</div>
-      </a>
-    </header>
 
-    
-    <section class ="main d-felx justify-content-between">
-      <div class="left h-55 w-30 p-5 text-white bg-dark rounded-3" id="user-loca-box">
-        <h2>Where are you ?</h2>
-          <form>
-            <div class="">
-              <input class="form-control" type="text" placeholder="ex) Denver" id="user-city">
-            </div>
-                <button type="submit" class="btn btn-light" id="user-city-submit">Search</button>
-          </form>
+  <body>
+  
+    <nav class="container py-4 ">
+      <div class="pb-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+          <div class="display-5 fw-bold mx-auto" id="nav-bar">WHEATHER</div>
+        </a>
       </div>
-          
-          <!-- div for search history -->
-          <div class="search-history">
-            <h2>Search History</h2>
-              <div class="line"></div>
-              <div class = "btn-frame d-flex flex-column justify-content-evenly">
-                <ul>
-                  <li>
-                    <button type="button" class="btn btn-dark" id="city1"></button>
-                  </li>
-                  <li>
-                    <button type="button" class="btn btn-dark" id="city2"></button>
-                  </li>
-                  <li>
-                    <button type="button" class="btn btn-dark" id="city3"></button>
-                  </li>
-                  <li>
-                    <button type="button" class="btn btn-dark" id="city4"></button>
-                  </li>
-                  <li>
-                    <button type="button" class="btn btn-dark" id="city5"></button>
-                  </li>
-                </ul>
-                  
-                    
-              
-              </div>
-          
-          </div>
-          <section class="right d-flex flex-column justify-content-between p-5 mb-15 bg-light rounded-1">
-            <div class="top d-flex flex-column justify-content-around">
-              <div class="today-title d-flex align-items-center">
-
-
-                <h1 class="display-5 fw-bold" id="current-location">SHOW CURRENT LOCA</h1>
-                <h2 class="display-7" id="current-date"></h2>
-                <img class="wheather-icon" id="current-weather-icon" src=""/>
-              </div>
-                
-                <ul class="d-flex flex-column justify-content-around" id="current-weather-details">
-                  <li>Temperature:</li>
-                  <li>Humidity:</li>
-                  <li>Wind Speed:</li>
-                  <li>UV Index:</li>
-                </ul>
-              </div>
+    </nav>
     
-          </section>    
-              
-           <br/> 
-  <!-- div for 5day forcast -->    
-      <section class="right d-flex flex-column justify-content-between p-5 mb-15 bg-dark rounded-1" id="next-five-days">
-            <!-- <div class="top d-flex flex-column justify-content-around"> -->
-        <h1 class="display-5 fw-bold text-white" id="current-location">The Next 5 Days</h1>
-      <div class="row align-items-end">
-        <!-- day 1 -->
-          <div class="col-12 col-sm-6 col-lg-2 mb-2">
-            <div class="card">
-              <h3 class="card-header" id="day1"> 
-              </h3>
-              <div class="card-body p-1">
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Temp:</li>
-                  <li class="list-group-item">Wind Speed:</li>
-                  <li class="list-group-item">Humidity:</li>
-                </ul>
+    <div class="container">
+      <div class="row">
+        <div class="col-4 bg-dark text-light p-4">
+          <h2 class="search-header my-1">Where are you?</h2>
+            <div class="input-group mb-3">
+              <input id="user-city-input" type="text" class="form-control" placeholder="ex) Denver" aria-label="user-city-search">
+              <div class="user-city-append">
+                <button class="btn btn-light" type="button" id="user-city-submit">
+                  <i class="fas fa-search">SEARCH</i>
+                </button>
               </div>
             </div>
-          </div>
-        <!-- day2 -->
-          <div class="col-12 col-sm-6 col-lg-2 mb-2">
-            <div class="card">
-              <h3 class="card-header" id="day2"> 
-                </h3>
-                <div class="card-body p-1">
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Temp:</li>
-                    <li class="list-group-item">Wind Speed:</li>
-                    <li class="list-group-item">Humidity:</li>
-                  </ul>
+              <button class="btn btn-secondary mb-3" type="button" id="clear-history">Clear history</button>
+                <form id="search-history"></form>
+        </div>
+          <div class="col-8">
+            <div class="row mr-0">
+              <div class="col-12 bg-light m-3 rounded">
+                <div class="row">
+                  <div class="col-12">
+                    <span id="current-city" class="city-name align-middle"></span>
+                    <img id="current-icon" src="./assets/images/placeholder.png" style="max-width:15%"alt="">
                 </div>
               </div>
-            </div>
-        <!-- day 3 -->
-          <div class="col-12 col-sm-6 col-lg-2 mb-2">
-            <div class="card">
-              <h3 class="card-header" id="day3"> 
-              </h3>
-              <div class="card-body p-1">
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Temp:</li>
-                  <li class="list-group-item">Wind Speed:</li>
-                  <li class="list-group-item">Humidity:</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        <!-- day4 -->
-          <div class="col-12 col-sm-6 col-lg-2 mb-2">
-            <div class="card">
-              <h3 class="card-header" id="day4">
-              </h3>
-              <div class="card-body p-1">
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Temp:</li>
-                  <li class="list-group-item">Wind Speed:</li>
-                  <li class="list-group-item">Humidity:</li>
-                </ul>
-              </div>
+                  <div class="row">
+                    <div class="col-12">
+                      <p id="current-temp"></p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12">
+                      <p id="current-humidity"></p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12">
+                      <p id="current-wind"></p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12 d-flex">
+                      <p id="current-UV"></p>
+                    </div>
+                  </div>
             </div>
           </div>
-        <!-- day5 -->
-          <div class="col-12 col-sm-6 col-lg-2 mb-2">
-            <div class="card">
-              <h3 class="card-header" id="day5">
-              </h3>
-              <div class="card-body p-1">
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Temp:</li>
-                  <li class="list-group-item">Wind Speed:</li>
-                  <li class="list-group-item">Humidity:</li>
-                </ul>
+              <div class="row">
+                <div class="col-12">
+                  <h3>The Next 5 Days</h3>
+                </div>
               </div>
-            </div>
-          </div>  
-
-          </div>
-        </div>
-      </section>
+              <div class="row">
+                <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+                <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+                <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+                <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+                <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+              </div>
+      </div>
     </div>
   </div>
 
-</main>
+    
 
-  <body>
+
+  
     <!-- JQUERY  -->
     <script
     src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
