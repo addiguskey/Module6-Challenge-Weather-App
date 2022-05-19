@@ -2,6 +2,8 @@
 
 ## Live Link
 
+https://addiguskey.github.io/Module6-Challenge-Weather-App/
+
 ## Repo Link
 
 https://github.com/addiguskey/Module6-Challenge-Weather-App
