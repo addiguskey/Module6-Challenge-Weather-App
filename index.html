@@ -26,28 +26,40 @@
         </a>
       </div>
     </nav>
-    
+    <!-- SEARCH/Clear History SECTION -->
     <div class="container">
       <div class="row">
-        <div class="col-4 bg-dark text-light p-4">
+        <div class="col-4 bg-dark text-light p-4 rounded-3">
           <h2 class="search-header my-1">Where are you?</h2>
             <div class="input-group mb-3">
-              <input id="user-city-input" type="text" class="form-control" placeholder="ex) Denver" aria-label="user-city-search">
+              <input id="user-city-input" type="text" class="form-control border-dark rounded-3" placeholder="ex) Denver" aria-label="user-city-search">
               <div class="user-city-append">
-                <button class="btn btn-light" type="button" id="user-city-submit">
+                <button class="btn btn-light border-dark" type="button" id="user-city-submit">
                   <i class="fas fa-search">SEARCH</i>
                 </button>
               </div>
             </div>
-              <button class="btn btn-secondary mb-3" type="button" id="clear-history">Clear history</button>
-                <form id="search-history"></form>
+              <button class="btn btn-secondary mb-3 mx-auto" type="button" id="clear-history">Clear History</button>
+              <div class="line color-light"></div>
+              <!-- PREVIOUS CITIES -->
+              <div class="btn-frame d-flex flex-column justify-content-evenly" id="previous-cities">
+                <button type="button" class="btn btn-light rounded-3" id="city1"></button>
+                <button type="button" class="btn btn-light rounded-3" id="city2"></button>
+                <button type="button" class="btn btn-light rounded-3" id="city3" ></button>
+                <button type="button" class="btn btn-light rounded-3" id="city4"> </button>
+                <button type="button" class="btn btn-light rounded-3" id="city5"></button>
+                <button type="button" class="btn btn-light rounded-3" id="city6"></button>
+            </div>
         </div>
+
+        <!-- CURRENT LOCATION -->
           <div class="col-8">
             <div class="row mr-0">
-              <div class="col-12 bg-light m-3 rounded">
+              <div class="col-12 bg-light text-dark m-3 p-4 rounded">
                 <div class="row">
                   <div class="col-12">
-                    <span id="current-city" class="city-name align-middle"></span>
+                    <h1 id="current-city" class="city-name align-middle"></h1>
+                    <h2 id="todays-date"></h2>
                     <img id="current-icon" src="./assets/images/placeholder.png" style="max-width:15%"alt="">
                 </div>
               </div>
@@ -106,6 +118,8 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+    <!-- Moment -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"></script>
     <!--JS  -->
     <script src="./assets/script.js"></script>
   </body>

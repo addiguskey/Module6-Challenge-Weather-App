@@ -1,3 +1,5 @@
+var today = moment();
+$("#todays-date").text(today.format("MM / D / YYYY"));
 var userCityInput = $("#user-city-input");
 // add eventlistner for usercitysubmit
 var userCitySearchBtn = $("user-city-submit");
