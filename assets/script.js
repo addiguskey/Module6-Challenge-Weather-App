@@ -38,7 +38,7 @@ userCityInput.on("keypress", function (e) {
 
 // clear History
 clearHistoryBtn.on("click", function () {
-  $("#previous-cities").empty();
+  $("#append-history").clear();
   window.localStorage.clear();
   //   renderSearchHistory();
 });
