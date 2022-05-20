@@ -13,28 +13,25 @@ var currentWind = $("#current-wind");
 var currentUV = $("#current-UV");
 
 //local storage for searched cities, search History
-userCityInput.on("keypress", function (e) {
+userCityInput.keypress(function (e) {
   if (e.which == 13) {
     renderSearchedCities();
   }
 });
 function renderSearchedCities() {
   let searchHistory = JSON.parse(localStorage.getItem("search")) || [];
-  // previousCitiesUl.empty();
 
-  for (let i = 0; i <= searchHistory.length; i++) {
-    var serachObj = searchHistory[i];
-    var searchLi = $("<button>", {
-      class: "btn btn-light rounded-3",
-    });
-    searchLi.text(serachObj);
-    $("#append-history").append(searchLi);
-  }
   var searchedCity = userCityInput.val();
+  var searchLi = $("<button>", {
+    class: "btn btn-light rounded-3",
+  });
+  searchLi.text(searchedCity);
+  $("#append-history").append(searchLi);
   searchHistory.push(searchedCity);
   localStorage.setItem("search", JSON.stringify(searchHistory));
   // ON CLICK OF NEW BTN, render that weather
 }
+renderSearchedCities();
 
 // clear History
 clearHistoryBtn.on("click", function () {
@@ -47,36 +44,8 @@ clearHistoryBtn.on("click", function () {
 //   return Math.floor((K - 273.15) * 1.8 + 32);
 // }
 
-// render search history
-function renderSearchHistory() {
-  previousCitiesUl.empty();
-  for (let i = 0; i < searchHistory.length; i++) {
-    var previousSearch = $("<input>", {
-      class: "form-control d-block bg-grey",
-    })
-      .attr("type", "text")
-      .attr("style", "margin-bottom: 10px;")
-      .attr("readonly", true)
-      .attr("value", searchHistory[i]);
-    previousSearch.on("click", function () {
-      getWeather(previousSearch.val());
-    });
-    previousCitiesUl.append(previousSearch);
-  }
-}
-renderSearchHistory();
-if (searchHistory.length > 0) {
-  getWeather(searchHistory[searchHistory.length - 1]);
-}
-
 // Weather !!
 
-userCityInput.addEventListener("keypress", setQuery);
-function setQuery(evt) {
-  if (evt.keyCode === 13) {
-    getResults(userCityInput.val());
-  }
-}
 var api = {
   key: "d61e6c3f32b672ef640a1eeab500b0dc",
   url: `https://api.openweathermap.org/data/2.5/`,
