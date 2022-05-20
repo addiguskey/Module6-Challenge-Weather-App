@@ -30,8 +30,8 @@ function renderSearchedCities() {
   searchHistory.push(searchedCity);
   localStorage.setItem("search", JSON.stringify(searchHistory));
   // ON CLICK OF NEW BTN, render that weather
+  searchLi.on("click", getWeather());
 }
-renderSearchedCities();
 
 // clear History
 clearHistoryBtn.on("click", function () {
