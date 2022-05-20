@@ -33,13 +33,13 @@ function renderSearchedCities() {
   var searchedCity = userCityInput.val();
   searchHistory.push(searchedCity);
   localStorage.setItem("search", JSON.stringify(searchHistory));
+  // ON CLICK OF NEW BTN, render that weather
 }
 
 // clear History
 clearHistoryBtn.on("click", function () {
-  $("#previous-cities").empty();
+  $("#append-history").empty();
   window.localStorage.clear();
-  //   renderSearchHistory();
 });
 
 // convert Kelvin to Ferenheit
