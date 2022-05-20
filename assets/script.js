@@ -3,42 +3,41 @@ $("#todays-date").text(today.format("MM / D / YYYY"));
 var userCityInput = $("#user-city-input");
 // add eventlistner for usercitysubmit
 var searchBtn = $("#user-city-submit");
-var clearHistoryBtn = $("clear-history");
-var previousCitiesUl = $("previous-cities");
+var clearHistoryBtn = $("#clear-history");
+var previousCitiesUl = $("#append-history");
 var currentLoca = $("#current-city");
-var currentIcon = $("current-icon");
-var currentTemp = $("current-temp");
-var currentHum = $("current-humidity");
-var currentWind = $("current-wind");
-var currentUV = $("current-UV");
+var currentIcon = $("#current-icon");
+var currentTemp = $("#current-temp");
+var currentHum = $("#current-humidity");
+var currentWind = $("#current-wind");
+var currentUV = $("#current-UV");
 
 //local storage for searched cities, search History
 userCityInput.on("keypress", function (e) {
   if (e.which == 13) {
     renderSearchedCities();
   }
-
-  function renderSearchedCities() {
-    let searchHistory = JSON.parse(localStorage.getItem("search")) || [];
-    previousCitiesUl.empty();
-
-    for (let i = 0; i < searchHistory.length; i++) {
-      var serachObj = searchHistory[i];
-      var searchLi = $("<button>", {
-        class: "btn btn-light rounded-3",
-      });
-      searchLi.text(serachObj);
-      $("#append-history").append(searchLi);
-    }
-    var searchedCity = userCityInput.val();
-    searchHistory.push(searchedCity);
-    localStorage.setItem("search", JSON.stringify(searchHistory));
-  }
 });
+function renderSearchedCities() {
+  let searchHistory = JSON.parse(localStorage.getItem("search")) || [];
+  // previousCitiesUl.empty();
+
+  for (let i = 0; i <= searchHistory.length; i++) {
+    var serachObj = searchHistory[i];
+    var searchLi = $("<button>", {
+      class: "btn btn-light rounded-3",
+    });
+    searchLi.text(serachObj);
+    $("#append-history").append(searchLi);
+  }
+  var searchedCity = userCityInput.val();
+  searchHistory.push(searchedCity);
+  localStorage.setItem("search", JSON.stringify(searchHistory));
+}
 
 // clear History
 clearHistoryBtn.on("click", function () {
-  $("#append-history").clear();
+  $("#previous-cities").empty();
   window.localStorage.clear();
   //   renderSearchHistory();
 });
