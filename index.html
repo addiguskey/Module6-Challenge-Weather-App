@@ -22,28 +22,32 @@
       </div>
     </nav>
     <!-- SEARCH/Clear History SECTION -->
-    <div class="container">
+    <div class="container main d-flex justify-content-bewteen">
       <div class="row">
-        <div class="col-4 bg-dark text-light p-4 rounded-3">
+        <div class="col-4 bg-dark text-light p-4 rounded-3 border-bottom">
           <h2 class="search-header my-1">Where are you?</h2>
             <div class="input-group mb-3">
               <input id="user-city-input" type="text" class="form-control border-dark rounded-3" placeholder="ex) Denver" aria-label="user-city-search">
               <div class="user-city-append">
-                <button class="btn btn-light border-dark" type="button" id="user-city-submit">
+                <!-- <button class="btn btn-light border-dark" type="button" id="user-city-submit">
                   <i class="fas fa-search">SEARCH</i>
-                </button>
+                </button> -->
               </div>
             </div>
-              <button class="btn btn-secondary mb-3 mx-auto" type="button" id="clear-history">Clear History</button>
-              <div class="line color-light"></div>
-              <!-- PREVIOUS CITIES -->
-              <div class="btn-frame d-flex flex-column justify-content-evenly" id="previous-cities">
-                <!-- <button type="button" class="btn btn-light rounded-3" id="city1"></button>
-                <button type="button" class="btn btn-light rounded-3" id="city2"></button>
-                <button type="button" class="btn btn-light rounded-3" id="city3" ></button>
-                <button type="button" class="btn btn-light rounded-3" id="city4"> </button>
-                <button type="button" class="btn btn-light rounded-3" id="city5"></button>
-                <button type="button" class="btn btn-light rounded-3" id="city6"></button> -->
+            <br>
+            <h3>Previously...</h3>
+            <!-- PREVIOUS CITIES -->
+            <div class="d-flex flex-column gap-3" id="previous-cities">
+                <button class="btn btn-secondary btn-block" type="button" id="clear-history">Clear History</button>
+                <div class="d-flex flex-column gap-3" id="append-history">
+
+                  <!-- <button type="button" class="btn btn-light btn-block rounded-3" id="city1"></button>
+                  <button type="button" class="btn btn-light btn-block rounded-3" id="city2"></button>
+                  <button type="button" class="btn btn-light btn-block rounded-3" id="city3" ></button>
+                  <button type="button" class="btn btn-light btn-block rounded-3" id="city4"> </button>
+                  <button type="button" class="btn btn-light btn-block rounded-3" id="city5"></button>
+                  <button type="button" class="btn btn-light btn-block rounded-3" id="city6"></button>  -->
+                  </div>
             </div>
         </div>
 

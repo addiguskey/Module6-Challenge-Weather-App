@@ -2,7 +2,9 @@
 #nav-bar {
     font
 }
-
+#history-box {
+    z-index: 1;
+}
 /* #user-loca-box{
     width: 25rem;
     height: 13rem;

@@ -13,27 +13,34 @@ var currentWind = $("current-wind");
 var currentUV = $("current-UV");
 
 //local storage for searched cities, search History
-userCityInput.keypress(function () {
-  let searchHistory = JSON.parse(localStorage.getItem("search")) || [];
-  previousCitiesUl.empty();
-
-  for (let i = 0; i < searchHistory.length; i++) {
-    var serachObj = searchHistory[i];
-    var searchLi = $("<li>", {
-      class: "btn btn-light rounded-3",
-    });
-    searchLi.text(serachObj);
-    previousCitiesUl.append(searchLi);
+userCityInput.on("keypress", function (e) {
+  if (e.which == 13) {
+    renderSearchedCities();
   }
-  var searchedCity = userCityInput.val();
-  searchHistory.push(searchedCity);
-  localStorage.setItem("search", JSON.stringify(searchHistory));
+
+  function renderSearchedCities() {
+    let searchHistory = JSON.parse(localStorage.getItem("search")) || [];
+    previousCitiesUl.empty();
+
+    for (let i = 0; i < searchHistory.length; i++) {
+      var serachObj = searchHistory[i];
+      var searchLi = $("<button>", {
+        class: "btn btn-light rounded-3",
+      });
+      searchLi.text(serachObj);
+      $("#append-history").append(searchLi);
+    }
+    var searchedCity = userCityInput.val();
+    searchHistory.push(searchedCity);
+    localStorage.setItem("search", JSON.stringify(searchHistory));
+  }
 });
 
 // clear History
 clearHistoryBtn.on("click", function () {
   $("#previous-cities").empty();
-  renderSearchHistory();
+  window.localStorage.clear();
+  //   renderSearchHistory();
 });
 
 // convert Kelvin to Ferenheit
