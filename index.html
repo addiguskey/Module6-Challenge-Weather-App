@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <!-- CSS -->
     <link rel="stylesheet" href="./assets/style.css"></link> 
     <!-- BOOTSTRAP -->
@@ -43,24 +38,30 @@
               <div class="line color-light"></div>
               <!-- PREVIOUS CITIES -->
               <div class="btn-frame d-flex flex-column justify-content-evenly" id="previous-cities">
-                <button type="button" class="btn btn-light rounded-3" id="city1"></button>
+                <!-- <button type="button" class="btn btn-light rounded-3" id="city1"></button>
                 <button type="button" class="btn btn-light rounded-3" id="city2"></button>
                 <button type="button" class="btn btn-light rounded-3" id="city3" ></button>
                 <button type="button" class="btn btn-light rounded-3" id="city4"> </button>
                 <button type="button" class="btn btn-light rounded-3" id="city5"></button>
-                <button type="button" class="btn btn-light rounded-3" id="city6"></button>
+                <button type="button" class="btn btn-light rounded-3" id="city6"></button> -->
             </div>
         </div>
 
-        <!-- CURRENT LOCATION -->
+        <!-- Denver Weather -->
           <div class="col-8">
             <div class="row mr-0">
               <div class="col-12 bg-light text-dark m-3 p-4 rounded">
                 <div class="row">
                   <div class="col-12">
-                    <h1 id="current-city" class="city-name align-middle"></h1>
-                    <h2 id="todays-date"></h2>
-                    <img id="current-icon" src="./assets/images/placeholder.png" style="max-width:15%"alt="">
+                    <h1 id="current-city" class="city-name align-middle p-4">Denver <span id="todays-date"></span><span><img id="current-icon" src="./assets/images/placeholder.png" style="max-width:15%"alt=""></span> </h1>
+                    <!-- <h2 id="todays-date"></h2> -->
+                    
+                    <ul>
+                      <li id="current-temp">Temperature:</li>
+                      <li id="current-humidity">Humidity:</li>
+                      <li id="current-wind">Wind Speed:</li>
+                      <li id="current-UV">UV Index:</li>
+                    </ul>
                 </div>
               </div>
                   <div class="row">
@@ -125,3 +126,8 @@
     <script src="./assets/script.js"></script>
   </body>
 </html>
+
+
+
+
+
