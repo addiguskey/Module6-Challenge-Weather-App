@@ -31,6 +31,14 @@ var appendDay5 = $("#day5");
 
 $("#append-history").on("click", "button", getWeather);
 renderSearchedCities();
+//Kelv to F
+// var unitConversion;
+// function unitConv(valNum) {
+//   valNum = parseFloat(valNum);
+//     unitConversion = ((valNum - 273.15) * 1.8 + 32).toFixed(2);
+
+// }
+
 //local storage for searched cities, search History
 $("#user-city-search").on("submit", function (e) {
   e.preventDefault();
@@ -70,7 +78,7 @@ var apiKey = "d61e6c3f32b672ef640a1eeab500b0dc";
 function getWeather() {
   $("#current-city").text("");
   var searchedCity = userCityInput.val();
-  var requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchedCity}&appid=${apiKey}&units=imperial`;
+  var requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchedCity}&units=imperial&appid=${apiKey}`;
   fetch(requestUrl)
     .then(function (response) {
       return response.json();
@@ -78,7 +86,7 @@ function getWeather() {
     .then(function (data) {
       console.log(data);
       //replace lat/long data.coords.lat
-      var requestURL2 = `https://api.openweathermap.org/data/2.5/onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&appid=${apiKey}&units=imperial`;
+      var requestURL2 = `https://api.openweathermap.org/data/2.5/onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&units=imperial&appid=${apiKey}`;
       fetch(requestURL2)
         .then(function (response) {
           return response.json();
@@ -98,74 +106,95 @@ function getWeather() {
           var currentTemp = data.current.temp;
           var currentWind = data.current.wind_speed;
           var currentHum = data.current.humidity;
-          var currentUV = data.current.uvi;
           var currentDesciption = data.current.weather[0].description;
           var currentIcon = data.current.weather[0].icon;
-          appendCurrentTemp.text("Temperature: " + currentTemp);
-          appendCurrentWind.text("Wind Speed: " + currentWind);
-          appendCurrentHum.text("Humidity: " + currentHum);
+          var currentUV = data.current.uvi;
+          if (currentUV < 2) {
+            $("#current-UV")
+              .css("background-color", "green")
+              .css("width", "17%")
+              .css("border-radius", "3mm");
+          } else if (currentUV > 2 && currentUV < 6) {
+            $("#current-UV")
+              .css("background-color", "yellow")
+              .css("width", "17%")
+              .css("border-radius", "3mm");
+          } else if (currentUV > 6 && currentUV < 8) {
+            $("#current-UV")
+              .css("background-color", "orange")
+              .css("width", "17%")
+              .css("border-radius", "3mm");
+          } else {
+            $("#current-UV")
+              .css("background-color", "red")
+              .css("width", "17%")
+              .css("border-radius", "3mm");
+          }
+          appendCurrentTemp.text("Temperature: " + currentTemp + " °C");
+          appendCurrentHum.text("Humidity: " + currentHum + " %");
+          appendCurrentWind.text("Wind Speed: " + currentWind + " m/s");
           appendCurrentUV.text("UV Index: " + currentUV);
           appendCurrentDescription.text(currentDesciption);
           appendCurrentIcon.attr(currentIcon);
 
           //   DAY1;
           //   var day1Icon = data.daily[0].weather[0].icon;
-          var day1Temp = data.daily[0].temp.day;
-          var day1Wind = data.daily[0].wind_speed;
-          var day1Hum = data.daily[0].humidity;
           var day1Des = data.daily[0].weather[0].description;
+          var day1Temp = data.daily[0].temp.day;
+          var day1Hum = data.daily[0].humidity;
+          var day1Wind = data.daily[0].wind_speed;
 
           //   $("#day1Icon").attr("src", day1Icon);
           $("#day1Des").text(day1Des);
-          $("#day1Temp").text("Temperature: " + day1Temp);
-          $("#day1Wind").text("Wind Speed: " + day1Wind);
-          $("#day1Hum").text("Humidity: " + day1Hum);
+          $("#day1Temp").text("Temperature: " + day1Temp + " °C");
+          $("#day1Hum").text("Humidity: " + day1Hum + " %");
+          $("#day1Wind").text("Wind Speed: " + day1Wind + " m/s");
 
           // DAY2
           var day2Icon = data.daily[1].weather[0].icon;
-          var day2Temp = data.daily[1].temp.day;
-          var day2Wind = data.daily[1].wind_speed;
-          var day2Hum = data.daily[1].humidity;
           var day2Des = data.daily[1].weather[0].description;
+          var day2Temp = data.daily[1].temp.day;
+          var day2Hum = data.daily[1].humidity;
+          var day2Wind = data.daily[1].wind_speed;
 
           $("#day2Des").text(day2Des);
-          $("#day2Temp").text("Temperature: " + day2Temp);
-          $("#day2Wind").text("Wind Speed: " + day2Wind);
-          $("#day2Hum").text("Humidity: " + day2Hum);
+          $("#day2Temp").text("Temperature: " + day2Temp + " °C");
+          $("#day2Hum").text("Humidity: " + day2Hum + " %");
+          $("#day2Wind").text("Wind Speed: " + day2Wind + " m/s");
 
           // DAY3
           var day3Icon = data.daily[2].weather[0].icon;
-          var day3Temp = data.daily[2].temp.day;
-          var day3Wind = data.daily[2].wind_speed;
-          var day3Hum = data.daily[2].humidity;
           var day3Des = data.daily[2].weather[0].description;
+          var day3Temp = data.daily[2].temp.day;
+          var day3Hum = data.daily[2].humidity;
+          var day3Wind = data.daily[2].wind_speed;
 
           $("#day3Des").text(day3Des);
-          $("#day3Temp").text("Temperature: " + day3Temp);
-          $("#day3Wind").text("Wind Speed: " + day3Wind);
-          $("#day3Hum").text("Humidity: " + day3Hum);
+          $("#day3Temp").text("Temperature: " + day3Temp + " °C");
+          $("#day3Hum").text("Humidity: " + day3Hum + " %");
+          $("#day3Wind").text("Wind Speed: " + day3Wind + " m/s");
           // DAY 4
           var day4Icon = data.daily[3].weather[0].icon;
-          var day4Temp = data.daily[3].temp.day;
-          var day4Wind = data.daily[3].wind_speed;
-          var day4Hum = data.daily[3].humidity;
           var day4Des = data.daily[3].weather[0].description;
+          var day4Temp = data.daily[3].temp.day;
+          var day4Hum = data.daily[3].humidity;
+          var day4Wind = data.daily[3].wind_speed;
 
           $("#day4Des").text(day4Des);
-          $("#day4Temp").text("Temperature: " + day4Temp);
-          $("#day4Wind").text("Wind Speed: " + day4Wind);
-          $("#day4Hum").text("Humidity: " + day4Hum);
+          $("#day4Temp").text("Temperature: " + day4Temp + " °C");
+          $("#day4Hum").text("Humidity: " + day4Hum + " %");
+          $("#day4Wind").text("Wind Speed: " + day4Wind + " m/s");
           // DAY5
           var day5Icon = data.daily[4].weather[0].icon;
-          var day5Temp = data.daily[4].temp.day;
-          var day5Wind = data.daily[4].wind_speed;
-          var day5Hum = data.daily[4].humidity;
           var day5Des = data.daily[4].weather[0].description;
+          var day5Temp = data.daily[4].temp.day;
+          var day5Hum = data.daily[4].humidity;
+          var day5Wind = data.daily[4].wind_speed;
 
           $("#day5Des").text(day5Des);
-          $("#day5Temp").text("Temperature: " + day5Temp);
-          $("#day5Wind").text("Wind Speed: " + day5Wind);
-          $("#day5Hum").text("Humidity: " + day5Hum);
+          $("#day5Temp").text("Temperature: " + day5Temp + " °C");
+          $("#day5Hum").text("Humidity: " + day5Hum + " %");
+          $("#day5Wind").text("Wind Speed: " + day5Wind + " m/s");
         });
     });
 }

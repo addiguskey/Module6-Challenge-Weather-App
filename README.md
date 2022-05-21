@@ -30,4 +30,4 @@ THEN I am again presented with current and future conditions for that city
 
 ## Preview
 
-![alt text](./assets/images/preview.png)
+![alt text](./assets/images/weather-preview.png)
