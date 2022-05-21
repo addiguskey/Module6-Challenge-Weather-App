@@ -72,14 +72,15 @@ function getWeather() {
         })
         .then(function (data) {
           console.log(data);
+          $("#current-city").append(searchedCity);
           var currentTemp = data.current.temp;
           var currentWind = data.current.wind_speed;
           var currentHum = data.current.humidity;
           var currentUV = data.current.uvi;
-          appendCurrentTemp.text(currentTemp);
-          appendCurrentWind.text(currentWind);
-          appendCurrentHum.text(currentHum);
-          appendCurrentUV.text(currentUV);
+          appendCurrentTemp.text("Temperature: " + currentTemp);
+          appendCurrentWind.text("Wind Speed: " + currentWind);
+          appendCurrentHum.text("Humidity: " + currentHum);
+          appendCurrentUV.text("UV Index: " + currentUV);
 
           // DAY1
           var day1Icon = data.daily[0].weather[0].id;
@@ -102,7 +103,7 @@ function getWeather() {
           var day2Wind = data.daily[1].wind_speed;
           var day2Hum = data.daily[1].humidity;
 
-          appendDday2.text(`${day2Icon}
+          appendDay2.text(`${day2Icon}
             Temp: ${day2Temp}
             Wind: ${day2Wind}
             Humidity:${day2Hum}`);
