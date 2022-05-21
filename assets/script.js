@@ -13,8 +13,6 @@ var day5 = new moment().add(5, "day");
 $("#day5-d8").text(day5.format("MM/D/YYYY"));
 
 var userCityInput = $("#user-city-input");
-// add eventlistner for usercitysubmit
-// var searchBtn = $("#user-city-submit");
 var clearHistoryBtn = $("#clear-history");
 var previousCitiesUl = $("#append-history");
 var appendCurrentLoca = $("#current-city");
@@ -70,6 +68,7 @@ clearHistoryBtn.on("click", function () {
 var apiKey = "d61e6c3f32b672ef640a1eeab500b0dc";
 // Weather !!
 function getWeather() {
+  $("#current-city").text("");
   var searchedCity = userCityInput.val();
   var requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchedCity}&appid=${apiKey}&units=imperial`;
   fetch(requestUrl)
