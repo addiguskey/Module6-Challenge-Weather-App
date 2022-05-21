@@ -64,7 +64,7 @@ function renderSearchedCities() {
     $("#append-history").append(searchLi);
   }
   // ON CLICK OF NEW BTN, render that weather
-  //   searchLi.on("click", getWeather());
+  //   searchLi.on("click", "button", getWeather());
 }
 
 // clear History
@@ -130,9 +130,9 @@ function getWeather() {
               .css("width", "17%")
               .css("border-radius", "3mm");
           }
-          appendCurrentTemp.text("Temperature: " + currentTemp + " °C");
+          appendCurrentTemp.text("Temperature: " + currentTemp + " °F");
           appendCurrentHum.text("Humidity: " + currentHum + " %");
-          appendCurrentWind.text("Wind Speed: " + currentWind + " m/s");
+          appendCurrentWind.text("Wind Speed: " + currentWind + " MPH");
           appendCurrentUV.text("UV Index: " + currentUV);
           appendCurrentDescription.text(currentDesciption);
           appendCurrentIcon.attr(currentIcon);
@@ -146,9 +146,9 @@ function getWeather() {
 
           //   $("#day1Icon").attr("src", day1Icon);
           $("#day1Des").text(day1Des);
-          $("#day1Temp").text("Temperature: " + day1Temp + " °C");
+          $("#day1Temp").text("Temperature: " + day1Temp + " °F");
           $("#day1Hum").text("Humidity: " + day1Hum + " %");
-          $("#day1Wind").text("Wind Speed: " + day1Wind + " m/s");
+          $("#day1Wind").text("Wind Speed: " + day1Wind + " MPH");
 
           // DAY2
           var day2Icon = data.daily[1].weather[0].icon;
@@ -158,9 +158,9 @@ function getWeather() {
           var day2Wind = data.daily[1].wind_speed;
 
           $("#day2Des").text(day2Des);
-          $("#day2Temp").text("Temperature: " + day2Temp + " °C");
+          $("#day2Temp").text("Temperature: " + day2Temp + " °F");
           $("#day2Hum").text("Humidity: " + day2Hum + " %");
-          $("#day2Wind").text("Wind Speed: " + day2Wind + " m/s");
+          $("#day2Wind").text("Wind Speed: " + day2Wind + " MPH");
 
           // DAY3
           var day3Icon = data.daily[2].weather[0].icon;
@@ -170,9 +170,9 @@ function getWeather() {
           var day3Wind = data.daily[2].wind_speed;
 
           $("#day3Des").text(day3Des);
-          $("#day3Temp").text("Temperature: " + day3Temp + " °C");
+          $("#day3Temp").text("Temperature: " + day3Temp + " °F");
           $("#day3Hum").text("Humidity: " + day3Hum + " %");
-          $("#day3Wind").text("Wind Speed: " + day3Wind + " m/s");
+          $("#day3Wind").text("Wind Speed: " + day3Wind + " MPH");
           // DAY 4
           var day4Icon = data.daily[3].weather[0].icon;
           var day4Des = data.daily[3].weather[0].description;
@@ -181,9 +181,9 @@ function getWeather() {
           var day4Wind = data.daily[3].wind_speed;
 
           $("#day4Des").text(day4Des);
-          $("#day4Temp").text("Temperature: " + day4Temp + " °C");
+          $("#day4Temp").text("Temperature: " + day4Temp + " °F");
           $("#day4Hum").text("Humidity: " + day4Hum + " %");
-          $("#day4Wind").text("Wind Speed: " + day4Wind + " m/s");
+          $("#day4Wind").text("Wind Speed: " + day4Wind + " MPH");
           // DAY5
           var day5Icon = data.daily[4].weather[0].icon;
           var day5Des = data.daily[4].weather[0].description;
@@ -192,9 +192,9 @@ function getWeather() {
           var day5Wind = data.daily[4].wind_speed;
 
           $("#day5Des").text(day5Des);
-          $("#day5Temp").text("Temperature: " + day5Temp + " °C");
+          $("#day5Temp").text("Temperature: " + day5Temp + " °F");
           $("#day5Hum").text("Humidity: " + day5Hum + " %");
-          $("#day5Wind").text("Wind Speed: " + day5Wind + " m/s");
+          $("#day5Wind").text("Wind Speed: " + day5Wind + " MPH");
         });
     });
 }
