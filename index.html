@@ -12,12 +12,12 @@
     <title>WEATHER APP</title>
   </head>
 
-  <body>ß
+  <body>
   
     <nav class="container py-4 ">
       <div class="pb-3 mb-4 border-bottom">
         <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
-          <div class="display-5 fw-bold mx-auto" id="nav-bar">WHEATHER</div>
+          <div class="display-5 fw-bold mx-auto" id="nav-bar">WEATHER</div>
         </a>
       </div>
     </nav>
@@ -59,12 +59,13 @@
               <div class="col-12 bg-light text-dark m-3 p-4 rounded">
                 <div class="row">
                   <div class="col-12">
-                    <h1 id="current-city" class="city-name align-middle p-4"> <span id="todays-date"></span><span><img id="current-icon" src="./assets/images/placeholder.png" style="max-width:15%"alt=""></span> </h1>      
+                    <h1 class="city-name align-middle p-3"><span id="current-city"></span> <span id="todays-date"></span><span><img id="current-icon"  style="max-width:15%"alt=""></span> </h1>  
+                    <h3 class="city-name align-middle p-4" id="current-description"></h3>    
                     <ul>
-                      <li id="current-temp"></li>
-                      <li id="current-humidity"></li>
-                      <li id="current-wind"></li>
-                      <li id="current-UV"></li>
+                      <li id="current-temp">Temperature: </li>
+                      <li id="current-humidity">Wind Speed:</li>
+                      <li id="current-wind">Humidity:</li>
+                      <li id="current-UV">UV Index:</li>
                     </ul>
                 </div>
               </div>
@@ -91,50 +92,55 @@
             </div>
           </div>
           <!-- THE NEXT 5 DAYS -->
-              <div class="row">
+              <div class="row" id="next-five-days">
                 <div class="col-12">
                   <h3>The Next 5 Days</h3>
                 </div>
               </div>
               <div class="row mx-auto">
                 <div class="col forecast bg-dark text-white ml-3 mb-3 rounded d-flex flex-column justify-content-around" id="day1">
-                  <h5 id="day1Date"></h5>
+                  <h6 id="day1-d8"></h6>
+                    <p id="day1Des"></p>
                   <ul>
-                    <li id="day1Temp">temp:</li>
-                    <li id="day1Hum">hum:</li>
-                    <li id="day1Wind">wind:</li>
+                    <li id="day1Temp"></li>
+                    <li id="day1Wind"></li>
+                    <li id="day1Hum"></li>
                   </ul>
                 </div>
                 <div class="col forecast bg-dark text-white ml-3 mb-3 rounded d-flex flex-column justify-content-around" id="day2">
-                  <h5 id="day2Date"></h5>
+                  <h6 id="day2-d8"></h6>
+                  <p id="day2Des"></p>
                   <ul>
-                    <li id="day2Temp">temp:</li>
-                    <li id="da2Hum">hum:</li>
-                    <li id="day2Wind">wind:</li>
+                    <li id="day2Temp"></li>
+                    <li id="day2Wind"></li>
+                    <li id="da2Hum"></li>
                   </ul>
                 </div>
                 <div class="col forecast bg-dark text-white ml-3 mb-3 rounded d-flex flex-column justify-content-around" id="day3">
-                  <h5 id="day4Date"></h5>
+                  <h6 id="day3-d8"></h6>
+                  <p id="day3Des"></p>
                   <ul>
-                    <li id="day4Temp">temp:</li>
-                    <li id="day4Hum">hum:</li>
-                    <li id="day4Wind">wind:</li>
+                    <li id="day3Temp"></li>
+                    <li id="day3Wind"></li>
+                    <li id="day3Hum"></li>
                   </ul>
                 </div>
                 <div class="col forecast bg-dark text-white ml-3 mb-3 rounded d-flex flex-column justify-content-around" id="day4">
-                  <h5 id="day4Date"></h5>
+                  <h6 id="day4-d8"></h6>
+                  <p id="day4Des"></p>
                   <ul>
-                    <li id="day4Temp">temp:</li>
-                    <li id="day4Hum">hum:</li>
-                    <li id="day4Wind">wind:</li>
+                    <li id="day4Temp"></li>
+                    <li id="day4Wind"></li>
+                    <li id="day4Hum"></li>
                   </ul>
                 </div>
                 <div class="col forecast bg-dark text-white ml-3 mb-3 rounded d-flex flex-column justify-content-around" id="day5">
-                  <h5 id="day5Date"></h5>
+                  <h6 id="day5-d8"></h6>
+                  <p id="day5Des"></p>
                   <ul>
-                    <li id="day5Temp">temp:</li>
-                    <li id="day5Hum">hum:</li>
-                    <li id="day5Wind">wind:</li>
+                    <li id="day5Temp"></li>
+                    <li id="day5Wind"></li>
+                    <li id="day5Hum"></li>
                   </ul>
                 </div>
 
