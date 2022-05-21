@@ -133,11 +133,12 @@ function getWeather() {
           $("#day2Temp").text("Temperature: " + day2Temp);
           $("#day2Wind").text("Wind Speed: " + day2Wind);
           $("#day2Hum").text("Humidity: " + day2Hum);
+
           // DAY3
           var day3Icon = data.daily[2].weather[0].icon;
           var day3Temp = data.daily[2].temp.day;
           var day3Wind = data.daily[2].wind_speed;
-          var day3Hum = data.daily[2].humiconity;
+          var day3Hum = data.daily[2].humidity;
           var day3Des = data.daily[2].weather[0].description;
 
           $("#day3Des").text(day3Des);
