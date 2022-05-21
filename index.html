@@ -12,7 +12,7 @@
     <title>WEATHER APP</title>
   </head>
 
-  <body>
+  <body>ß
   
     <nav class="container py-4 ">
       <div class="pb-3 mb-4 border-bottom">
@@ -27,12 +27,14 @@
         <div class="col-4 bg-dark text-light p-4 rounded-3 border-bottom">
           <h2 class="search-header my-1">Where are you?</h2>
             <div class="input-group mb-3">
-              <input id="user-city-input" type="text" class="form-control border-dark rounded-3" placeholder="ex) Denver" aria-label="user-city-search">
-              <div class="user-city-append">
-                <button class="btn btn-light border-dark" type="button" id="user-city-submit">
-                  <i class="fas fa-search">SEARCH</i>
-                </button>
-              </div>
+              <form id="user-city-search">
+                <input id="user-city-input" type="text" class="form-control form-block order-dark rounded-3" placeholder="ex) Denver" aria-label="user-city-search">
+                <!-- <div class="user-city-append"> -->
+                  <!-- <button class="btn btn-light border-dark" type="submit" id="user-city-submit">
+                    <i class="fas fa-search">SEARCH</i>
+                  </button> -->
+                <!-- </div> -->
+              </form>
             </div>
             <br>
             <h3>Previously...</h3>
@@ -57,9 +59,7 @@
               <div class="col-12 bg-light text-dark m-3 p-4 rounded">
                 <div class="row">
                   <div class="col-12">
-                    <h1 id="current-city" class="city-name align-middle p-4">Denver <span id="todays-date"></span><span><img id="current-icon" src="./assets/images/placeholder.png" style="max-width:15%"alt=""></span> </h1>
-                    <!-- <h2 id="todays-date"></h2> -->
-                    
+                    <h1 id="current-city" class="city-name align-middle p-4"> <span id="todays-date"></span><span><img id="current-icon" src="./assets/images/placeholder.png" style="max-width:15%"alt=""></span> </h1>      
                     <ul>
                       <li id="current-temp">Temperature:</li>
                       <li id="current-humidity">Humidity:</li>
@@ -97,15 +97,48 @@
                 </div>
               </div>
               <div class="row mx-auto">
-                <div class="col forecast bg-dark text-white ml-3 mb-3 rounded d-flex flex-column align-items-center justify-content-around" id="day1">asdfad</div>
+                <div class="col forecast bg-dark text-white ml-3 mb-3 rounded d-flex flex-column justify-content-around" id="day1">
+                  <h5 id="day1Date"></h5>
+                  <ul>
+                    <li id="day1Temp">temp:</li>
+                    <li id="day1Hum">hum:</li>
+                    <li id="day1Wind">wind:</li>
+                  </ul>
+                </div>
+                <div class="col forecast bg-dark text-white ml-3 mb-3 rounded d-flex flex-column justify-content-around" id="day2">
+                  <h5 id="day2Date"></h5>
+                  <ul>
+                    <li id="day2Temp">temp:</li>
+                    <li id="da2Hum">hum:</li>
+                    <li id="day2Wind">wind:</li>
+                  </ul>
+                </div>
+                <div class="col forecast bg-dark text-white ml-3 mb-3 rounded d-flex flex-column justify-content-around" id="day3">
+                  <h5 id="day4Date"></h5>
+                  <ul>
+                    <li id="day4Temp">temp:</li>
+                    <li id="day4Hum">hum:</li>
+                    <li id="day4Wind">wind:</li>
+                  </ul>
+                </div>
+                <div class="col forecast bg-dark text-white ml-3 mb-3 rounded d-flex flex-column justify-content-around" id="day4">
+                  <h5 id="day4Date"></h5>
+                  <ul>
+                    <li id="day4Temp">temp:</li>
+                    <li id="day4Hum">hum:</li>
+                    <li id="day4Wind">wind:</li>
+                  </ul>
+                </div>
+                <div class="col forecast bg-dark text-white ml-3 mb-3 rounded d-flex flex-column justify-content-around" id="day5">
+                  <h5 id="day5Date"></h5>
+                  <ul>
+                    <li id="day5Temp">temp:</li>
+                    <li id="day5Hum">hum:</li>
+                    <li id="day5Wind">wind:</li>
+                  </ul>
+                </div>
 
-                <div class="col forecast bg-dark text-white ml-3 mb-3 rounded d-flex flex-column align-items-center justify-content-around" id="day2">asdf</div>
-                  
-                <div class="col forecast bg-dark text-white ml-3 mb-3 rounded d-flex flex-column align-items-center justify-content-around" id ="day3">asdf</div>
-                  
-                <div class="col forecast bg-dark text-white ml-3 mb-3 rounded d-flex flex-column align-items-center justify-content-around" id="day4">asdf</div>
-                  
-                <div class="col forecast bg-dark text-white ml-3 mb-3 rounded d-flex flex-column align-items-center justify-content-around" id="day5">asdf</div>
+              
                   
               </div>
           </div>

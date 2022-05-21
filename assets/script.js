@@ -2,35 +2,49 @@ var today = moment();
 $("#todays-date").text(today.format("MM / D / YYYY"));
 var userCityInput = $("#user-city-input");
 // add eventlistner for usercitysubmit
-var searchBtn = $("#user-city-submit");
+// var searchBtn = $("#user-city-submit");
 var clearHistoryBtn = $("#clear-history");
 var previousCitiesUl = $("#append-history");
-var currentLoca = $("#current-city");
-var currentIcon = $("#current-icon");
-var currentTemp = $("#current-temp");
-var currentHum = $("#current-humidity");
-var currentWind = $("#current-wind");
-var currentUV = $("#current-UV");
+var appendCurrentLoca = $("#current-city");
+var appendCurrentIcon = $("#current-icon");
+var appendCurrentTemp = $("#current-temp");
+var appendCurrentHum = $("#current-humidity");
+var appendCurrentWind = $("#current-wind");
+var appendCurrentUV = $("#current-UV");
+var appendDay1 = $("#day1");
+var appendDay2 = $("#day2");
+var appendDay3 = $("#day3");
+var appendDay4 = $("#day4");
+var appendDay5 = $("#day5");
 
+$("#append-history").on("click", "button", getWeather);
+renderSearchedCities();
 //local storage for searched cities, search History
-userCityInput.keypress(function (e) {
-  if (e.which == 13) {
-    renderSearchedCities();
-  }
+$("#user-city-search").on("submit", function (e) {
+  e.preventDefault();
+  renderSearchedCities();
+  getWeather();
+  userCityInput.val("");
 });
 function renderSearchedCities() {
   let searchHistory = JSON.parse(localStorage.getItem("search")) || [];
 
   var searchedCity = userCityInput.val();
-  var searchLi = $("<button>", {
-    class: "btn btn-light rounded-3",
-  });
-  searchLi.text(searchedCity);
-  $("#append-history").append(searchLi);
-  searchHistory.push(searchedCity);
-  localStorage.setItem("search", JSON.stringify(searchHistory));
+  if (searchedCity.length > 0) {
+    searchHistory.push(searchedCity);
+    localStorage.setItem("search", JSON.stringify(searchHistory));
+  }
+  $("#append-history").empty();
+  for (let i = 0; i < searchHistory.length; i++) {
+    const searchObj = searchHistory[i];
+    var searchLi = $("<button>", {
+      class: "btn btn-light rounded-3",
+    });
+    searchLi.text(searchObj);
+    $("#append-history").append(searchLi);
+  }
   // ON CLICK OF NEW BTN, render that weather
-  searchLi.on("click", getWeather());
+  //   searchLi.on("click", getWeather());
 }
 
 // clear History
@@ -39,29 +53,105 @@ clearHistoryBtn.on("click", function () {
   window.localStorage.clear();
 });
 
-// convert Kelvin to Ferenheit
-// function kelv2F(K) {
-//   return Math.floor((K - 273.15) * 1.8 + 32);
+var apiKey = "d61e6c3f32b672ef640a1eeab500b0dc";
+// Weather !!
+function getWeather() {
+  var searchedCity = userCityInput.val();
+  var requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchedCity}&appid=${apiKey}`;
+  fetch(requestUrl)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+      //replace lat/long data.coords.lat
+      var requestURL2 = `https://api.openweathermap.org/data/2.5/onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&appid=${apiKey}&units=imperial`;
+      fetch(requestURL2)
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (data) {
+          console.log(data);
+          var currentTemp = data.current.temp;
+          var currentWind = data.current.wind_speed;
+          var currentHum = data.current.humidity;
+          var currentUV = data.current.uvi;
+          appendCurrentTemp.text(currentTemp);
+          appendCurrentWind.text(currentWind);
+          appendCurrentHum.text(currentHum);
+          appendCurrentUV.text(currentUV);
+
+          // DAY1
+          var day1Icon = data.daily[0].weather[0].id;
+          var day1Temp = data.daily[0].temp.day;
+          var day1Wind = data.daily[0].wind_speed;
+          var day1Hum = data.daily[0].humidity;
+
+          $("#day1Icon").text(`${data.daily[0].weather[0].id}`);
+          $("#day1Temp").text(`${data.daily[0].temp.day}`);
+          $("#day1Wind").text(`${data.daily[0].wind_speed}`);
+          $("#day1UV").text(`${data.daily[0].humidity}`);
+          $("#day1Icon").append(day1Icon);
+          $("#day1Temp").append(day1Temp);
+          $("#day1Wind").append(day1Wind);
+          $("#day1Hum").append(day1Hum);
+
+          // DAY2
+          var day2Icon = data.daily[1].weather[0].id;
+          var day2Temp = data.daily[1].temp.day;
+          var day2Wind = data.daily[1].wind_speed;
+          var day2Hum = data.daily[1].humidity;
+
+          appendDday2.text(`${day2Icon}
+            Temp: ${day2Temp}
+            Wind: ${day2Wind}
+            Humidity:${day2Hum}`);
+          // DAY3
+          var day3Icon = data.daily[2].weather[0].id;
+          var day3Temp = data.daily[2].temp.day;
+          var day3Wind = data.daily[2].wind_speed;
+          var day3Hum = data.daily[2].humidity;
+
+          appendDay3.text(`${day3Icon}
+            Temp: ${day3Temp}
+            Wind: ${day3Wind}
+            Humidity:${day3Hum}`);
+          // DAY 4
+          var day4Icon = data.daily[3].weather[0].id;
+          var day4Temp = data.daily[3].temp.day;
+          var day4Wind = data.daily[3].wind_speed;
+          var day4Hum = data.daily[3].humidity;
+
+          appendDay4.text(`${day4Icon}
+            Temp: ${day4Temp}
+            Wind: ${day4Wind}
+            Humidity:${day4Hum}`);
+          // DAY5
+          var day5Icon = data.daily[4].weather[0].id;
+          var day5Temp = data.daily[4].temp.day;
+          var day5Wind = data.daily[4].wind_speed;
+          var day5Hum = data.daily[4].humidity;
+
+          appendDay5.text(`${day5Icon}
+            Temp: ${day5Temp}
+            Wind: ${day5Wind}
+            Humidity:${day5Hum}`);
+        });
+    });
+}
+
+// var requestUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${searchedCity}&appid=${apiKey}`;
+// function getWeather(userCityInput) {
+//   fetch(`${api.url}weather?q=${userCityInput}&units=imperial&appid=${api.key}`)
+//     .then((weather) => {
+//       return weather.json();
+//     })
+//     .then(displayWeather);
 // }
 
-// Weather !!
-
-var api = {
-  key: "d61e6c3f32b672ef640a1eeab500b0dc",
-  url: `https://api.openweathermap.org/data/2.5/`,
-};
-
-function getResults(query) {
-  fetch(`${api.url}weather?q=${query}&units=imperial&appid=${api.key}`)
-    .then((weather) => {
-      return weather.json();
-    })
-    .then(displayResults);
-}
-
-function displayResults(weather) {
-  currentLoca.innerText = `${weather.name}, ${weather.sys.country}`;
-}
+// function displayWeather(weather) {
+//   $("current-city").text(${weather.name}, ${weather.sys.country});
+// }
 // function getWeather(query) {
 //   fetch(`${api.url}weather?q=${query}&units=imperial&appid=${api.key}`)
 //     .then(function (response) {
